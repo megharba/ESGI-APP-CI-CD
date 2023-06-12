@@ -12,5 +12,5 @@ jobs:
            dockerfile: Dockerfile
       - name: "Build Image"
         run: docker build -t megharba/ojetbuilder:1.0.0 ./
-      - name: "Say Hello"
-        run: docker container run --rm --volume="$(pwd)":"$(pwd)" --workdir="$(pwd)" cowsay:latest bash -c "cat ./README.md | /usr/games/cowsay"
+      - name: "run containers"
+        run: docker run -it --rm  megharba/ojetbuilder:latest bash -c "cat ./README.md"
