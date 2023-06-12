@@ -13,4 +13,8 @@ jobs:
       - name: "Build Image"
         run: docker build -t megharba/ojetbuilder:1.0.0 ./
       - name: "run containers"
-        run: docker run -it --rm  megharba/ojetbuilder:latest bash -c "cat ./README.md"
+        run: docker run -it --rm --name=esgiOjetBuilder megharba/ojetbuilder:latest 
+      - name: "check containers"
+        run: docker ps
+      - name: "stop containers"
+        run: docker stop esgiOjetBuilder
