@@ -1,8 +1,16 @@
-name: Bonjour
+name: Bonjour Bruno
 on:
+  - pull_request
   - push
 jobs:
   dire_bonjour:
     runs-on: ubuntu-22.04
     steps:
-      - run: echo "Bonjour"
+      - uses: actions/checkout@v3 # Récupère le contenu du dépôt correspondant au commit du workflow en cours
+      - uses: hadolint/hadolint-action@v3.1.0
+        with:
+           dockerfile: Dockerfile
+      - name: "Build Image"
+        run: docker build -t megharba/ojetbuilder:1.0.0 ./
+      - name: "Say Hello"
+        run: docker container run --rm --volume="$(pwd)":"$(pwd)" --workdir="$(pwd)" cowsay:latest bash -c "cat ./README.md | /usr/games/cowsay"
