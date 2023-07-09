@@ -1,3 +1,4 @@
+# hadolint ignore=DL3016
 # Utilisez une image de base appropriée pour votre application Oracle JET
 FROM node:14
 # Définir le répertoire de travail dans le conteneur
