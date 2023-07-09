@@ -1,19 +1,21 @@
-name: Bonjour Bruno
+name: release CI-CD 
 on:
-  - pull_request
-  - push
+  pull_request:
+  push:
+  schedule:
+    - cron: "0 0 * * *"
 jobs:
-  dire_bonjour:
-    runs-on: ubuntu-22.04
+  build:
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3 # Récupère le contenu du dépôt correspondant au commit du workflow en cours
       - uses: hadolint/hadolint-action@v3.1.0
         with:
            dockerfile: Dockerfile
       - name: "Build Image"
-        run: docker build -t megharba/ojetbuilder:1.0.0 ./
+        run: docker build --tag=megharba/ojetbuilder:latest ./
       - name: "run containers"
-        run: docker run -it --rm --name=esgiOjetBuilder megharba/ojetbuilder:latest 
+        run: docker run -d --rm --name=esgiOjetBuilder megharba/ojetbuilder:latest 
       - name: "check containers"
         run: docker ps
       - name: "stop containers"
