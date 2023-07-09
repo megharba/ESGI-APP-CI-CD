@@ -7,7 +7,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Installez les dépendances de l'application
-RUN npm install --save-exact @oracle/ojet-cli@14.1.0
+RUN npm install -g @oracle/ojet-cli@14.1.0
 
 # Copiez tout le code source de l'application dans le conteneur
 COPY . /app
