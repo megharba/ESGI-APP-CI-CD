@@ -1,4 +1,4 @@
-# hadolint ignore=DL3016
+
 # Utilisez une image de base appropriée pour votre application Oracle JET
 FROM node:14
 # Définir le répertoire de travail dans le conteneur
@@ -14,6 +14,9 @@ COPY . /app
 
 # Restore application & Build appliaction.
 RUN ojet restore && ojet build
+
+# Définir le volume pour les fichiers de l'application
+VOLUME ["/app"]
 
 # Exposez le port sur lequel votre application Oracle JET s'exécute
 EXPOSE 8080
