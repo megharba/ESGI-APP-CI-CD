@@ -19,7 +19,7 @@ RUN ojet restore && ojet build
 VOLUME ["/app"]
 
 # Exposez le port sur lequel votre application Oracle JET s'exécute
-EXPOSE 8080
+EXPOSE 8000
 
 # Commande de démarrage de l'application Oracle JET
 CMD ["ojet", "serve"]
