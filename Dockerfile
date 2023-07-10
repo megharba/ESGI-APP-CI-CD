@@ -15,11 +15,11 @@ COPY . /app
 # Restore application & Build appliaction.
 RUN ojet restore && ojet build
 
-# Définir le volume pour les fichiers de l'application
-VOLUME ["/app"]
-
 # Exposez le port sur lequel votre application Oracle JET s'exécute
-EXPOSE 8000
+EXPOSE 8080
+
+# Définir le volume pour les fichiers de l'application
+VOLUME ["/app/data"]
 
 # Commande de démarrage de l'application Oracle JET
 CMD ["ojet", "serve"]
